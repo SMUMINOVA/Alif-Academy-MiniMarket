@@ -8,11 +8,11 @@ namespace lesson3
 
             decimal userBalance = 300m;
             string basket = "";
-            string erroBalanceMessage = "У вас недостаточно средств";
+            string erroBalanceMessage = "You haven't enough money";
 
         start: //Метка "start"
 
-            System.Console.WriteLine($"Ваш баланс - {userBalance}");
+            System.Console.WriteLine($"Your balance - {userBalance}");
 
             if (userBalance <= 0)
             {
@@ -21,13 +21,13 @@ namespace lesson3
             };
 
             System.Console.WriteLine("" +
-            "1 Кола - 10 сомон\n" +
-            "2 Сникерс - 7 сомон\n" +
-            "3 Марс - 9 сомон\n" +
-            "4 M&Ms - 4 сомон\n" +
-            "5 Чипсы - 14 сомон\n" +
-            "6 Выход\n" +
-            "Ваш выбор (1-6):");
+            "1 Cola - 10 somoni\n" +
+            "2 Snikers - 7 somoni\n" +
+            "3 Mars - 9 somoni\n" +
+            "4 M&Ms - 4 somoni\n" +
+            "5 Chips - 14 somoni\n" +
+            "6 Exit\n" +
+            "Your choice (1-6):");
 
             int choice = int.Parse(Console.ReadLine());
 
@@ -38,7 +38,7 @@ namespace lesson3
                     {
                         if (userBalance - 10 >= 0)
                         {
-                            basket += "Кола,";
+                            basket += "Cola,";
                             userBalance -= 10;
                         }
                         else
@@ -46,8 +46,76 @@ namespace lesson3
                             System.Console.WriteLine(erroBalanceMessage);
                             goto End;
                         }
-                        System.Console.Write("Вы хотите продолжить? д/н:");
-                        if (Console.ReadLine().ToLower() == "д") goto start;
+                        System.Console.Write("Do you want to continue? y/n:");
+                        if (Console.ReadLine().ToLower() == "y") goto start;
+                        else goto End;
+                    }
+                    break;
+                    case 2:
+                    {
+                        if (userBalance - 7 >= 0)
+                        {
+                            basket += "Snikers,";
+                            userBalance -= 7;
+                        }
+                        else
+                        {
+                            System.Console.WriteLine(erroBalanceMessage);
+                            goto End;
+                        }
+                        System.Console.Write("Do you want to continue? y/n:");
+                        if (Console.ReadLine().ToLower() == "y") goto start;
+                        else goto End;
+                    }
+                    break;
+                    case 3:
+                    {
+                        if (userBalance - 9 >= 0)
+                        {
+                            basket += "Mars,";
+                            userBalance -= 9;
+                        }
+                        else
+                        {
+                            System.Console.WriteLine(erroBalanceMessage);
+                            goto End;
+                        }
+                        System.Console.Write("Do you want to continue? y/n:");
+                        if (Console.ReadLine().ToLower() == "y") goto start;
+                        else goto End;
+                    }
+                    break;
+                    case 4:
+                    {
+                        if (userBalance - 4 >= 0)
+                        {
+                            basket += "M&Ms,";
+                            userBalance -= 4;
+                        }
+                        else
+                        {
+                            System.Console.WriteLine(erroBalanceMessage);
+                            goto End;
+                        }
+                        System.Console.Write("Do you want to continue? y/n:");
+                        if (Console.ReadLine().ToLower() == "y") goto start;
+                        else goto End;
+                    }
+                    break;
+                    case 5:
+                    {
+                        if (userBalance - 14 >= 0)
+                        {
+                            basket += "Chips,";
+                            userBalance -= 14;
+                        }
+                        else
+                        {
+                            System.Console.WriteLine(erroBalanceMessage);
+                            goto End;
+                        }
+                        System.Console.Write("Do you want to continue? y/n:");
+                        if (Console.ReadLine().ToLower() == "y") goto start;
                         else goto End;
                     }
                     break;
@@ -57,7 +125,20 @@ namespace lesson3
             }
 
         End:
-            System.Console.WriteLine($"Ваши покупки:{basket}\nВаш баланс:{userBalance}");
+            System.Console.WriteLine($"Your prchases:{basket}\nYour balance:{userBalance}");
+            System.Console.WriteLine("If you want to replenish your balance push \"a\"\n If you want to exit push some another keys: ");
+            if(Console.ReadLine().ToLower() == "a"){
+                System.Console.WriteLine("how much do you want to replenish your balance? ");
+                int money = int.Parse(Console.ReadLine());
+                userBalance += money;
+                System.Console.WriteLine("Do you want to continue shopping? y/n :");
+                if (Console.ReadLine().ToLower() == "y") goto start;
+                        else System.Console.WriteLine("Good bye!");
+            } else {
+                System.Console.WriteLine("Good bye!");
+            }
+
+
             Console.ReadKey();
         }
     }
